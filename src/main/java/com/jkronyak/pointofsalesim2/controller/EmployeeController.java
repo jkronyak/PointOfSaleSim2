@@ -3,7 +3,6 @@ package com.jkronyak.pointofsalesim2.controller;
 import com.jkronyak.pointofsalesim2.model.EmployeeModel;
 import com.jkronyak.pointofsalesim2.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,8 +43,6 @@ public class EmployeeController {
     public ResponseEntity<Boolean> deleteEmployee(@PathVariable Long employeeId) {
         return ResponseEntity.ok(employeeService.deleteEmployee(employeeId));
     }
-
-
 
 
 }
