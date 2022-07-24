@@ -9,7 +9,7 @@ public class EmployeeModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer employeeId;
+    private Long employeeId;
 
     @Column(name = "first_name")
     private String firstName;
@@ -21,11 +21,11 @@ public class EmployeeModel {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    public Integer getEmployeeId() {
+    public Long getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(Integer employeeId) {
+    public void setEmployeeId(Long employeeId) {
         this.employeeId = employeeId;
     }
 
