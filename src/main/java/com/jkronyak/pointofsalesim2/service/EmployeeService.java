@@ -23,9 +23,7 @@ public class EmployeeService {
     }
 
     public EmployeeModel getEmployeeById(Long employeeId) {
-        EmployeeModel foundEmployeeModel = employeeRepository.findById(employeeId).orElse(null);
-        if(foundEmployeeModel == null) { throw new EmployeeNotFoundException("No employee found with id: " + employeeId); }
-        return foundEmployeeModel;
+        return employeeRepository.findById(employeeId).orElseThrow(() -> new EmployeeNotFoundException("No employee found with id: " + employeeId));
     }
 
     public EmployeeModel createEmployee(EmployeeModel employeeModel) {
@@ -33,8 +31,7 @@ public class EmployeeService {
     }
 
     public EmployeeModel updateEmployee(Long employeeId, EmployeeModel employeeModel) {
-        EmployeeModel foundEmployeeModel = employeeRepository.findById(employeeId).orElse(null);
-        if(foundEmployeeModel == null) { throw new EmployeeNotFoundException("No employee found with id: " + employeeId); }
+        EmployeeModel foundEmployeeModel = employeeRepository.findById(employeeId).orElseThrow(() -> new EmployeeNotFoundException("No employee found with id: " + employeeId));
         foundEmployeeModel.setFirstName(employeeModel.getFirstName());
         foundEmployeeModel.setLastName(employeeModel.getLastName());
         foundEmployeeModel.setRole(employeeModel.getRole());
@@ -42,8 +39,7 @@ public class EmployeeService {
     }
 
     public Boolean deleteEmployee(Long employeeId) {
-        EmployeeModel foundEmployeeModel = employeeRepository.findById(employeeId).orElse(null);
-        if(foundEmployeeModel == null) { throw new EmployeeNotFoundException("No employee found with id: " + employeeId); }
+        employeeRepository.findById(employeeId).orElseThrow(() -> new EmployeeNotFoundException("No employee found with id: " + employeeId));
         employeeRepository.deleteById(employeeId);
         return true;
     }

@@ -19,9 +19,7 @@ public class ItemService {
     public List<ItemModel> getAllItems() { return itemRepository.findAll(); }
 
     public ItemModel getItemById(Long itemId) {
-        ItemModel foundItemModel = itemRepository.findById(itemId).orElse(null);
-        if(foundItemModel == null) { throw new ResourceNotFoundException("No item found with id: " + itemId); }
-        return foundItemModel;
+        return itemRepository.findById(itemId).orElseThrow(() -> new ResourceNotFoundException("No item found with id: " + itemId));
     }
 
     public ItemModel createItem(ItemModel itemModel) {
@@ -29,8 +27,7 @@ public class ItemService {
     }
 
     public ItemModel updateItem(Long itemId, ItemModel itemModel) {
-        ItemModel foundItemModel = itemRepository.findById(itemId).orElse(null);
-        if(foundItemModel == null) { throw new ResourceNotFoundException("No item found with id: " + itemId); }
+        ItemModel foundItemModel = itemRepository.findById(itemId).orElseThrow(() -> new ResourceNotFoundException("No item found with id: " + itemId));
         foundItemModel.setName(itemModel.getName());
         foundItemModel.setWeighted(itemModel.getWeighted());
         foundItemModel.setPrice(itemModel.getPrice());
@@ -38,8 +35,7 @@ public class ItemService {
     }
 
     public Boolean deleteItem(Long itemId) {
-        ItemModel foundItemModel = itemRepository.findById(itemId).orElse(null);
-        if(foundItemModel == null) { throw new ResourceNotFoundException("No item found with id: " + itemId); }
+        itemRepository.findById(itemId).orElseThrow(() -> new ResourceNotFoundException("No item found with id: " + itemId));
         itemRepository.deleteById(itemId);
         return true;
     }
