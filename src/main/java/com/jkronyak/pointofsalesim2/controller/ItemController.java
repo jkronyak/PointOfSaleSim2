@@ -4,10 +4,7 @@ import com.jkronyak.pointofsalesim2.model.ItemModel;
 import com.jkronyak.pointofsalesim2.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,6 +25,21 @@ public class ItemController {
     @GetMapping(value="/{itemId}")
     public ResponseEntity<ItemModel> getItemById(@PathVariable Long itemId) {
         return ResponseEntity.ok(itemService.getItemById(itemId));
+    }
+
+    @PostMapping(value="/")
+    public ResponseEntity<ItemModel> createIem(@RequestBody ItemModel itemModel) {
+        return ResponseEntity.ok(itemService.createItem(itemModel));
+    }
+
+    @PutMapping(value="/{itemId}")
+    public ResponseEntity<ItemModel> updateItem(@PathVariable Long itemId, @RequestBody ItemModel itemModel) {
+        return ResponseEntity.ok(itemService.updateItem(itemId, itemModel));
+    }
+
+    @DeleteMapping(value="/{itemId}")
+    public ResponseEntity<Boolean> deleteItem(@PathVariable Long itemId) {
+        return ResponseEntity.ok(itemService.deleteItem(itemId));
     }
 
 
