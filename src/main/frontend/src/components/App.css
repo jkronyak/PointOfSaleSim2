@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+form {
+  display: inline-block;
+}
+
+/*input[type=text], input[type=password] {*/
+/*  display: flex;*/
+/*  width: 33%*/
+/*}*/
