@@ -2,27 +2,13 @@
   text-align: center;
 }
 
-label {
-  justify-content: left;
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-input, button {
-  display: inline-block;
-  box-sizing: border-box;
-  margin: 10px;
-  font-size: large;
-  width: 33%;
+#login-logo {
+  height: 10%;
+  width: 10%;
 }
-
-.login-form {
-  align-content: center;
-  width: 33%;
-  margin: auto;
-}
-
-button {
-  align-self: center;
-  font-size: large;
-  width: 15%
-}
-

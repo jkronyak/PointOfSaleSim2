@@ -1,12 +1,15 @@
 import './App.css';
 import LoginPage from "./LoginPage";
+import {Box} from "@mui/material";
+import {Outlet} from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <LoginPage></LoginPage>
-    </div>
-  );
+export default function App() {
+    return (
+        <Box className="App">
+            <LoginPage/>
+            {/*<Outlet/>*/}
+        </Box>
+    );
 }
 
-export default App;
+
